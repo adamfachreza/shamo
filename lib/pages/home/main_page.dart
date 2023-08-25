@@ -1,3 +1,5 @@
+// ignore_for_file: dead_code
+
 import 'package:flutter/material.dart';
 import 'package:shamo/pages/home/chat_page.dart';
 import 'package:shamo/pages/home/home_page.dart';
@@ -107,7 +109,9 @@ class _MainPageState extends State<MainPage> {
           return WishlistPage();
           break;
         case 3:
-          return ProfilePage();
+          return ProfilePage(
+            context: context,
+          );
           break;
         default:
           throw Exception("Invalid index: $currentIndex");
@@ -115,7 +119,7 @@ class _MainPageState extends State<MainPage> {
     }
 
     return Scaffold(
-      backgroundColor: backgroundColor1,
+      backgroundColor: currentIndex == 0 ? backgroundColor1 : backgroundColor3,
       floatingActionButton: cartButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: customButtomNav(),
