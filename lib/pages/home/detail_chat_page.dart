@@ -122,7 +122,7 @@ class DetailChatPage extends StatelessWidget {
                     ),
                     child: Center(
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: InputDecoration.collapsed(
                           hintText: 'Type Message..',
                           hintStyle: subtitleTextStyle,
                         ),
