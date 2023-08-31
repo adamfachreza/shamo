@@ -4,14 +4,14 @@ import 'package:shamo/model/user_model.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
-  String baseUrl = "http://127.0.0.1:8000";
+  String baseUrl = 'http://192.168.1.11:8000';
 
   Future<UserModel> register(
       {required String name,
-      String? username,
+      required String username,
       required String email,
       required String password}) async {
-    var url = '$baseUrl/register';
+    var url = '$baseUrl/api/register';
     var headers = {'Content-Type': 'application/json'};
     var body = jsonEncode({
       'name': name,
@@ -20,7 +20,10 @@ class AuthService {
       'password': password,
     });
 
-    var response = await http.post(url as Uri, headers: headers, body: body);
+    var response =
+        await http.post(Uri.parse(url), headers: headers, body: body);
+
+    print(response.body);
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];

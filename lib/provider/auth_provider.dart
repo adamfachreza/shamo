@@ -12,9 +12,9 @@ class AuthProvider with ChangeNotifier {
 
   Future<bool> register(
       {required String name,
-      String? username,
+      required String username,
       required String email,
-      required password}) async {
+      required String password}) async {
     try {
       UserModel user = await AuthService().register(
           name: name, username: username, email: email, password: password);
